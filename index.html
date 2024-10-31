@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="bag-dash.svg" type="image/x-icon">
+    <title>Tienda Online</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/76808fbf34.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header id="header">
+        <h1>Tienda Online</h1>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#reseñas">Reseñas</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <!-- Sección Inicio -->
+        <section id="inicio" class="d-flex">          
+            <div class="container">
+                <h2>Inicio</h2>
+            <p>Bienvenido a nuestra página, donde encontrarás los mejores productos y servicios.</p>
+                <div>
+                <iframe src="https://www.youtube.com/embed/tY9aXQinKj0" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="slider-box">
+                <h2>Imagenes</h2>
+                <ul>
+                    <li>
+                        <img src="./img/doctor.jpg" alt="doctor">
+                    </li>
+                    <li>
+                        <img src="./img/pc.jpg" alt="pc">
+                    </li>
+                    <li>
+                        <img src="./img/phone.jpg" alt="phone">
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Sección Productos -->
+        <section id="productos">
+            <h2>Productos</h2>
+            <div class="productos-container">
+                <div class="card">
+                    <img src="producto1.jpg" alt="Producto 1">
+                    <h3>Producto 1</h3>
+                    <p>Descripción del producto 1.</p>
+                </div>
+                <div class="card">
+                    <img src="producto2.jpg" alt="Producto 2">
+                    <h3>Producto 2</h3>
+                    <p>Descripción del producto 2.</p>
+                </div>
+                <div class="card">
+                    <img src="producto3.jpg" alt="Producto 3">
+                    <h3>Producto 3</h3>
+                    <p>Descripción del producto 3.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Reseñas -->
+        <section id="reseñas">
+            <h2>Reseñas</h2>
+            <div class="reseñas-grid">
+                <div class="reseña">
+                    <p>"Excelente calidad y servicio."</p>
+                    <h4>- Cliente 1</h4>
+                </div>
+                <div class="reseña">
+                    <p>"Muy satisfecho con mi compra."</p>
+                    <h4>- Cliente 2</h4>
+                </div>
+                <div class="reseña">
+                    <p>"Volvería a comprar sin dudar."</p>
+                    <h4>- Cliente 3</h4>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Contacto -->
+        <section id="contacto">
+            <h2>Contacto</h2>
+            <form action="https://formspree.io/f/yourformid" method="POST">
+                <label for="name">Nombre</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Correo</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Mensaje</label>
+                <textarea id="message" name="message" required></textarea>
+
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 Tienda Online</p>
+    </footer>
+</body>
+</html>
