@@ -21,10 +21,10 @@
 
 1. Clona este repositorio:
    ```bash
-   git clone https://github.com/tu_usuario/iphone-store-online.git
+   git clone https://github.com/Nicoalazar/TalentoTech.git
    ```
 2. Accede a la carpeta del proyecto:
    ```bash
-   cd iphone-store-online
+   cd TalentoTech
    ```
 3. Abre el archivo index.html en tu navegador.
