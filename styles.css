@@ -35,6 +35,9 @@ footer {
     text-align: center;
     padding: 10px;
 }
+h2{
+    text-align: center;
+}
 
 /* Productos */
 .productos-container {
@@ -49,8 +52,8 @@ footer {
     border: 1px solid #ddd;
     border-radius: 8px;
     width: 100%;
-    height: 400px;
-    max-width: 250px;
+    height: 700px;
+    max-width: 350px;
     padding: 5px;
     text-align: center;
 }
@@ -58,7 +61,7 @@ footer {
     height: 75%;
 }
 .container {
-    max-width: 1200px;
+    max-width: 50%;
     margin: auto;
     padding-left: 1px;
 }
@@ -128,6 +131,11 @@ iframe {
     padding: 15px;
     border-radius: 8px;
     text-align: center;
+}
+
+.reseña p {
+    font-style: italic;
+    height: 60%;
 }
 
 /* Contacto */
