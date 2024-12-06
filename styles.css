@@ -232,6 +232,15 @@ form button[type="submit"]:active {
     background-color: var(--secondary-color); 
 }
 
+button {
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.1);
+    background-color: var(--accent-color);
+}
+
 
 /* Media Queries */
 @media (max-width: 768px) {
