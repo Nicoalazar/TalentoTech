@@ -10,15 +10,16 @@ document.querySelector("form").addEventListener("submit", (e) => {
 });
 const productosContainer = document.querySelector(".productos-container");
 
-fetch("https://fakestoreapi.com/products")
+fetch("https://fakestoreapi.in/api/products/category?type=mobile")
     .then((response) => response.json())
-    .then((data) => {
-        data.forEach((producto) => {
+    .then((resp) => {
+        products= resp.products.filter((product) => product.brand === "apple").sort((a, b) => a.price - b.price);
+        products.forEach((producto) => {
             const card = `
                 <div class="card">
                     <img src="${producto.image}" alt="${producto.title}" />
-                    <h3>${producto.title}</h3>
-                    <p>${producto.description}</p>
+                    <h3>${producto.title.slice(6)}</h3>                    
+                    <p>Precio: $${producto.price}</p>
                     <button class="btn-add-cart">Añadir al carrito</button>
                 </div>
             `;
