@@ -9,17 +9,28 @@ document.querySelector("form").addEventListener("submit", (e) => {
     }
 });
 const productosContainer = document.querySelector(".productos-container");
+let products = [];
 
 fetch("https://fakestoreapi.in/api/products/category?type=mobile")
     .then((response) => response.json())
     .then((resp) => {
         products= resp.products.filter((product) => product.brand === "apple").sort((a, b) => a.price - b.price);
+
         products.forEach((producto) => {
             const card = `
                 <div class="card">
-                    <img src="${producto.image}" alt="${producto.title}" />
-                    <h3>${producto.title.slice(6)}</h3>                    
+                    <div class="card-image">
+                       <img src="${producto.image}" alt="${producto.title}" />
+                    </div>
+                    <div class="card-title">
+                        <h3>${producto.title.slice(6)}</h3>
+                    </div>
+                    <div class="card-description">
+                        <button class="btn-description" data-id=${producto.id}>Ver descripción</button>
+                    </div>
+                    <div class="card-price">                    
                     <p>Precio: $${producto.price}</p>
+                    </div>
                     <button class="btn-add-cart">Añadir al carrito</button>
                 </div>
             `;
@@ -33,7 +44,7 @@ document.body.addEventListener("click", (e) => {
         const card = e.target.closest(".card");
         const producto = {
             title: card.querySelector("h3").innerText,
-            description: card.querySelector("p").innerText,
+            price: card.querySelector("p").innerText,
         };
 
         let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
@@ -43,3 +54,38 @@ document.body.addEventListener("click", (e) => {
         console.log("Producto añadido al carrito:", carrito);
     }
 });
+
+document.body.addEventListener("click", (e) => {
+    if (e.target.classList.contains("btn-description")) {
+        const id = e.target.getAttribute("data-id"); // Captura el ID del botón
+
+        const encontrado = products.find((product) => product.id == id); 
+
+        if (encontrado) {
+            // Actualiza el contenido del modal
+            document.getElementById("productModalLabel").innerText = `Descripción de ${encontrado.model}`;
+            document.getElementById("productDescription").innerText = encontrado.description;
+
+            // Muestra el modal
+            const productModal = new bootstrap.Modal(document.getElementById("productModal"));
+            productModal.show();
+        } else {
+            alert("Producto no encontrado.");
+        }
+    }
+});
+
+let lastScrollY = window.scrollY;
+const navbar = document.getElementById("navbar");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY < lastScrollY) {
+    // Scroll hacia arriba: muestra la barra
+    navbar.style.top = "100px";
+  } else {
+    // Scroll hacia abajo: oculta la barra
+    navbar.style.top = "-60px"; // Ajusta el valor según la altura de tu navbar
+  }
+  lastScrollY = window.scrollY;
+});
+
