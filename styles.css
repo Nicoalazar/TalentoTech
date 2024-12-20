@@ -16,13 +16,50 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
 }
-
-header {
-    background-color: var(--primary-color);
-    color: var(--bg-color);
+#header {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 10px; /* Espaciado entre las filas */
+    align-items: center; /* Centrar los elementos verticalmente */
+    background-color: var(--primary-color); /* Color de fondo del header */
     padding: 20px;
+}
+
+#header h1 {
+    color: var(--bg-color);
     text-align: center;
 }
+
+.header-container {
+    display: grid;
+    grid-template-columns: 1fr auto; /* Una columna para nav y otra para el carrito */
+    gap: 10px;
+    align-items: center;
+}
+
+.nav {
+    grid-column: 1 / 2; /* Colocar nav en la primera columna */
+}
+
+.navcart {
+    grid-column: 2 / 3; /* Colocar carrito en la segunda columna */
+    text-align: right;
+    cursor: pointer;
+}
+
+#cart-count-header {
+    position: absolute;
+    right: 1em;
+    background-color: var(--accent-color);
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 3px 6px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+
 
 header nav ul {
     list-style: none;
@@ -299,11 +336,26 @@ button:hover {
     border: none;
     background-color: transparent;
     border-radius: 0px;
+    position: relative;
 }
 
-#btnUp :hover , #btnCart :hover {
+#btnUp:hover i, #btnCart:hover i {
     transform: scale(1.1);
-    background-color: transparent;
+    color: var(--text-color);
+    transition: color 0.3s linear, transform 0.3s linear;
+}
+
+#cart-count {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: var(--accent-color);
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 3px 6px;
+    border-radius: 50%;
+    display: inline-block;
 }
 
 #imgUp, #imgCart{

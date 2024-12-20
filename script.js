@@ -9,9 +9,11 @@ document.querySelector("form").addEventListener("submit", (e) => {
     }
 });
 const productsContainer = document.querySelector(".productos-container");
+const cartContainer = document.querySelector(".cart-container");
 let products = [];
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 const btnCart = document.getElementById("btnCart");
+const btnUp = document.getElementById("btnUp");
 
 if (cart.length > 0) {
     btnCart.hidden = false;
@@ -57,6 +59,7 @@ document.body.addEventListener("click", (e) => {
         cart.push(product);
         localStorage.setItem("cart", JSON.stringify(cart));
         btnCart.hidden = false;
+        updateCartCount();
 
         Swal.fire({
             icon: "success",
@@ -66,6 +69,13 @@ document.body.addEventListener("click", (e) => {
         });
     }
 });
+
+function updateCartCount() {
+    document.getElementById("cart-count").innerText = cart.length;
+    document.getElementById("cart-count-header").innerText = cart.length;
+}
+
+document.addEventListener("DOMContentLoaded", updateCartCount);
 
 document.body.addEventListener("click", (e) => {
     if (e.target.classList.contains("btn-description")) {
@@ -86,7 +96,7 @@ document.body.addEventListener("click", (e) => {
         }
     }
 });
-const cartContainer = document.querySelector(".cart-container");
+
 function openCart() {
     const cartModal = new bootstrap.Modal(document.getElementById("cartModal"));
     document.getElementById("cartModalLabel").innerText = "Carrito de compras";
@@ -103,15 +113,17 @@ function openCart() {
     cartModal.show();
 }
 
-const btnUp = document.getElementById("btnUp");
-
 window.addEventListener("scroll", () => {
-  if (window.scrollY == 0) {
-    btnUp.hidden = true;
-  } else {
-    btnUp.hidden = false;
-  }
+    const isAtTop = window.scrollY === 0;
+    const isAtDown = window.scrollY > 0;
+    const isCartEmpty = cart.length === 0;
+
+    // Configurar la visibilidad de los botones
+    btnUp.hidden = isAtTop;
+    btnCart.hidden = isAtTop || isCartEmpty;
+    navcart.hidden = isAtDown || isCartEmpty;
 });
+
 
 btnUp.addEventListener("click", () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
