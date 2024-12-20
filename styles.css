@@ -24,14 +24,6 @@ header {
     text-align: center;
 }
 
-#navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    transition: top 0.3s ease-in-out;
-}
-
 header nav ul {
     list-style: none;
     padding: 0;
@@ -293,6 +285,18 @@ button:hover {
     background-color: var(--accent-color);
 }
 
+#btnUp {
+    position: fixed;
+    bottom: 10%;
+    right: 20px;
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
 
 /* Media Queries */
 @media (max-width: 768px) {

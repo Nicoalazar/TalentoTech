@@ -76,16 +76,21 @@ document.body.addEventListener("click", (e) => {
 });
 
 let lastScrollY = window.scrollY;
-const navbar = document.getElementById("navbar");
+const btnUp = document.getElementById("btnUp");
 
 window.addEventListener("scroll", () => {
   if (window.scrollY < lastScrollY) {
     // Scroll hacia arriba: muestra la barra
-    navbar.style.top = "100px";
+    btnUp.hidden = true;
   } else {
     // Scroll hacia abajo: oculta la barra
-    navbar.style.top = "-60px"; // Ajusta el valor según la altura de tu navbar
+    btnUp.hidden = false; // Ajusta el valor según la altura de tu navbar
   }
   lastScrollY = window.scrollY;
 });
+
+// btnUp.addEventListener("click", () => {
+//     window.scrollTo({ top: 0, behavior: "smooth" });
+//   });
+  //TODO: AGREGAR BOTON DE SUBIR
 
