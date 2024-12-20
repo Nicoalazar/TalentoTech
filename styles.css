@@ -289,14 +289,26 @@ button:hover {
     position: fixed;
     bottom: 10%;
     right: 20px;
-    background-color: var(--primary-color);
-    color: var(--bg-color);
     border: none;
-    padding: 10px 20px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    background-color: transparent;
+    border-radius: 0px;
 }
+
+#btnUp :hover {
+    transform: scale(1.1);
+    background-color: transparent;
+}
+
+h6 i{
+    color: #006d77;
+    background-color: transparent; 
+}
+
+h6 i:hover{
+    color: var(--text-color);
+    transition: color 0.3s linear;
+}
+
 
 /* Media Queries */
 @media (max-width: 768px) {

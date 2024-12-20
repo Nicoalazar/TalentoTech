@@ -75,11 +75,10 @@ document.body.addEventListener("click", (e) => {
     }
 });
 
-let lastScrollY = window.scrollY;
 const btnUp = document.getElementById("btnUp");
 
 window.addEventListener("scroll", () => {
-  if (window.scrollY < lastScrollY) {
+  if (window.scrollY == 0) {
     // Scroll hacia arriba: muestra la barra
     btnUp.hidden = true;
   } else {
@@ -89,8 +88,7 @@ window.addEventListener("scroll", () => {
   lastScrollY = window.scrollY;
 });
 
-// btnUp.addEventListener("click", () => {
-//     window.scrollTo({ top: 0, behavior: "smooth" });
-//   });
-  //TODO: AGREGAR BOTON DE SUBIR
+btnUp.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
 
