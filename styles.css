@@ -19,9 +19,9 @@ body {
 #header {
     display: grid;
     grid-template-rows: auto 1fr;
-    gap: 10px; /* Espaciado entre las filas */
-    align-items: center; /* Centrar los elementos verticalmente */
-    background-color: var(--primary-color); /* Color de fondo del header */
+    gap: 10px; 
+    align-items: center; 
+    background-color: var(--primary-color);
     padding: 20px;
 }
 
@@ -32,17 +32,18 @@ body {
 
 .header-container {
     display: grid;
-    grid-template-columns: 1fr auto; /* Una columna para nav y otra para el carrito */
+    grid-template-columns: 1fr auto;
     gap: 10px;
     align-items: center;
 }
 
+/* Barra de navegación */
 .nav {
-    grid-column: 1 / 2; /* Colocar nav en la primera columna */
+    grid-column: 1 / 2;
 }
 
 .navcart {
-    grid-column: 2 / 3; /* Colocar carrito en la segunda columna */
+    grid-column: 2 / 3;
     text-align: right;
     cursor: pointer;
 }
@@ -58,8 +59,6 @@ body {
     border-radius: 50%;
     display: inline-block;
 }
-
-
 
 header nav ul {
     list-style: none;
@@ -82,12 +81,6 @@ header nav ul li a:hover {
     color: var(--accent-color);
 }
 
-footer {
-    background-color: var(--primary-color);
-    color: var(--bg-color);
-    text-align: center;
-    padding: 10px;
-}
 h1{
     text-align: center;
     margin-top: 1vh;
@@ -96,6 +89,14 @@ h1{
 h2 {
     text-align: center;
     color: var(--primary-color);
+}
+
+/* Pie de página */
+footer {
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+    text-align: center;
+    padding: 10px;
 }
 
 /* Sección Inicio */
@@ -196,26 +197,25 @@ h2 {
 
 .card img {
     height: auto;
-    max-height: 200px; /* Limita la altura de las imágenes */
-    width: auto;
-    max-width: 100%; /* Asegura que las imágenes no se salgan del contenedor */
-    object-fit: contain; /* Ajusta el tamaño sin distorsión */
+    max-height: 200px;
+    max-width: 100%;
+    object-fit: contain;
 }
 
 .card h3 {
     margin: 10px 0;
-    height: 3em; /* Altura fija para títulos (2 líneas de texto máximo) */
-    line-height: 1.5em; /* Ajusta el espaciado entre líneas */
-    overflow: hidden; /* Oculta cualquier texto adicional */
-    text-overflow: ellipsis; /* Agrega puntos suspensivos si el texto es muy largo */
+    height: 3em; 
+    line-height: 1.5em; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
 }
 
 .card p {
     margin: 10px 0;
-    height: 4em; /* Altura fija para títulos (2 líneas de texto máximo) */
-    line-height: 1.5em; /* Ajusta el espaciado entre líneas */
-    overflow: hidden; /* Oculta cualquier texto adicional */
-    text-overflow: ellipsis; /* Agrega puntos suspensivos si el texto es muy largo */
+    height: 4em;  
+    line-height: 1.5em;  
+    overflow: hidden; 
+    text-overflow: ellipsis;
 }
 
 .btn-description{
@@ -286,6 +286,7 @@ form input, form textarea {
     border-radius: 4px;
     background-color: var(--bg-color);
     color: var(--text-color);
+    resize: none;
 }
 
 form button[type="submit"] {
@@ -331,6 +332,7 @@ button:hover {
     gap: 10px; 
 }
 
+/* Botones */
 #btnUp, #btnCart {
 
     border: none;
@@ -370,7 +372,47 @@ button:hover {
 
 
 /* Media Queries */
-@media (max-width: 768px) {
+@media (max-width: 992px) {
+    
+    .header-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 5px;
+    }
+    
+    #header h1 {
+        color: var(--bg-color);
+        text-align: center;
+    }
+        
+    .nav {
+        grid-column: 1 / 2;
+        align-items: center;
+    }
+    
+    .navcart {
+        position: relative;
+        grid-column: 2 / 2; 
+        text-align: right;
+        cursor: pointer;
+        display: inline-block;
+    }
+    
+    #cart-count-header {
+        position: absolute;
+        right: 0.5vw;
+        background-color: var(--accent-color);
+        color: white;
+        font-size: 12px;
+        font-weight: bold;
+        padding: 3px 6px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 18px;
+        height: 18px;
+    }
     .d-flex {
         flex-direction: column;
         align-items: center;

@@ -213,9 +213,10 @@ function validateForm() {
         Swal.fire({
             icon: "error",
             title: "Todos los campos son obligatorios",
-            showConfirmButton: true,
+            showConfirmButton: false,
             timer: 1500,
         })
-        return false;   //TODO EVITAR ENVIO DEL FORMULARIO     
+        return false;     
     }
+    return true;
 }

@@ -24,7 +24,7 @@
         <div class="header-container">
             <div class="nav">
                 <nav id="navbar" class="navbar navbar-expand-lg" style="background-color: var(--primary-color);">
-                    <div class="collapse navbar-collapse" id="navbarNav">
+                    <div class="navbar-nav d-flex flex-lg-row flex-column w-50 justify-content-lg-around align-items-lg-center" id="navbarNav">
                         <ul class="navbar-nav">
                             <li class="nav-item">
                                 <a class="nav-link text-white" href="#inicio">Inicio</a>
@@ -123,7 +123,7 @@
         <!-- Sección Contacto -->
         <section id="contacto">
             <h2>Contacto</h2>
-            <form action="https://formspree.io/f/mqakbnbg" method="POST" contenteditable="true">
+            <form action="https://formspree.io/f/mqakbnbg" method="POST" contenteditable="true" onsubmit="return validateForm()">
                 <label for="name">Nombre</label>
                 <input type="text" id="name" name="name">
 
@@ -133,7 +133,7 @@
                 <label for="message">Mensaje</label>
                 <textarea id="message" name="message"></textarea>
 
-                <button type="submit" onclick="validateForm()">Enviar</button>
+                <button type="submit">Enviar</button>
             </form>
         </section>
     </main>
