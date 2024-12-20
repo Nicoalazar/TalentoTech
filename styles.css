@@ -285,26 +285,33 @@ button:hover {
     background-color: var(--accent-color);
 }
 
-#btnUp {
+.btn-container {
+    display: flex;
+    flex-direction: column;
     position: fixed;
     bottom: 10%;
     right: 20px;
+    gap: 10px; 
+}
+
+#btnUp, #btnCart {
+
     border: none;
     background-color: transparent;
     border-radius: 0px;
 }
 
-#btnUp :hover {
+#btnUp :hover , #btnCart :hover {
     transform: scale(1.1);
     background-color: transparent;
 }
 
-h6 i{
+#imgUp, #imgCart{
     color: #006d77;
     background-color: transparent; 
 }
 
-h6 i:hover{
+#imgUp:hover , #imgCart:hover {
     color: var(--text-color);
     transition: color 0.3s linear;
 }

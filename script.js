@@ -8,50 +8,62 @@ document.querySelector("form").addEventListener("submit", (e) => {
         e.preventDefault();
     }
 });
-const productosContainer = document.querySelector(".productos-container");
+const productsContainer = document.querySelector(".productos-container");
 let products = [];
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+const btnCart = document.getElementById("btnCart");
+
+if (cart.length > 0) {
+    btnCart.hidden = false;
+}  
 
 fetch("https://fakestoreapi.in/api/products/category?type=mobile")
     .then((response) => response.json())
     .then((resp) => {
         products= resp.products.filter((product) => product.brand === "apple").sort((a, b) => a.price - b.price);
 
-        products.forEach((producto) => {
+        products.forEach((product) => {
             const card = `
                 <div class="card">
                     <div class="card-image">
-                       <img src="${producto.image}" alt="${producto.title}" />
+                       <img src="${product.image}" alt="${product.title}" />
                     </div>
                     <div class="card-title">
-                        <h3>${producto.title.slice(6)}</h3>
+                        <h3>${product.title.slice(6)}</h3>
                     </div>
                     <div class="card-description">
-                        <button class="btn-description" data-id=${producto.id}>Ver descripción</button>
+                        <button class="btn-description" data-id=${product.id}>Ver descripción</button>
                     </div>
                     <div class="card-price">                    
-                    <p>Precio: $${producto.price}</p>
+                    <p>Precio: $${product.price}</p>
                     </div>
                     <button class="btn-add-cart">Añadir al carrito</button>
                 </div>
             `;
-            productosContainer.innerHTML += card;
+            productsContainer.innerHTML += card;
         });
     })
     .catch((error) => console.error("Error al obtener los productos:", error));
 
+    
 document.body.addEventListener("click", (e) => {
     if (e.target.classList.contains("btn-add-cart")) {
         const card = e.target.closest(".card");
-        const producto = {
+        const product = {
             title: card.querySelector("h3").innerText,
             price: card.querySelector("p").innerText,
         };
 
-        let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-        carrito.push(producto);
-        localStorage.setItem("carrito", JSON.stringify(carrito));
+        cart.push(product);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        btnCart.hidden = false;
 
-        console.log("Producto añadido al carrito:", carrito);
+        Swal.fire({
+            icon: "success",
+            title: "Producto agregado al carrito",
+            showConfirmButton: false,
+            timer: 1500,
+        });
     }
 });
 
@@ -74,18 +86,31 @@ document.body.addEventListener("click", (e) => {
         }
     }
 });
+const cartContainer = document.querySelector(".cart-container");
+function openCart() {
+    const cartModal = new bootstrap.Modal(document.getElementById("cartModal"));
+    document.getElementById("cartModalLabel").innerText = "Carrito de compras";
+    cartContainer.innerHTML = "";
+    cart.forEach((cart) => {
+        let cartDetail = `
+            <ul>
+                <li>${cart.title}</li>
+                <li>${cart.price}</li>
+            <ul>
+        `;
+        cartContainer.innerHTML += cartDetail;
+    });
+    cartModal.show();
+}
 
 const btnUp = document.getElementById("btnUp");
 
 window.addEventListener("scroll", () => {
   if (window.scrollY == 0) {
-    // Scroll hacia arriba: muestra la barra
     btnUp.hidden = true;
   } else {
-    // Scroll hacia abajo: oculta la barra
-    btnUp.hidden = false; // Ajusta el valor según la altura de tu navbar
+    btnUp.hidden = false;
   }
-  lastScrollY = window.scrollY;
 });
 
 btnUp.addEventListener("click", () => {
