@@ -133,7 +133,7 @@
                 <label for="message">Mensaje</label>
                 <textarea id="message" name="message"></textarea>
 
-                <button type="submit">Enviar</button>
+                <button type="submit" onclick="validateForm()">Enviar</button>
             </form>
         </section>
     </main>
@@ -178,6 +178,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" id="update-cart">Actualizar Carrito</button>
+                    <button type="button" class="btn btn-danger" onclick="clearCart()" data-bs-dismiss="modal">Vaciar Carrito</button>
                 </div>
             </div>
         </div>
