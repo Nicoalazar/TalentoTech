@@ -16,9 +16,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="script.js" defer></script>
-
-
 </head>
+
 <body>
     <header id="header">
         <h1>iPhone Store Online</h1>
@@ -58,15 +57,15 @@
         <section id="inicio" class="d-flex">
             <div class="container">
                 <div class="welcome">
-                <h2>Bienvenido a iPhone Store</h2>
+                    <h2>Bienvenido a iPhone Store</h2>
                 </div>
                 <div class="description">
-            <p>En iPhone Store, nos especializamos en ofrecerte los últimos modelos de iPhone con garantía de calidad y al mejor precio.
-                <br><br>Con más de 10 años de experiencia, nos enorgullecemos de brindar un servicio excepcional y asesorarte en la elección del dispositivo ideal para ti.
-                <br><br>Estamos ubicados en el corazón de la ciudad, en Avenida Tecnológica 123, Ciudad Tech.
-                <br><br>Si prefieres comprar desde la comodidad de tu hogar, te ofrecemos envíos rápidos y seguros a nivel nacional.
-                <br><br>¡Explora nuestro catálogo y encuentra el iPhone que siempre soñaste!</p>
-            </div>
+                    <p>En iPhone Store, nos especializamos en ofrecerte los últimos modelos de iPhone con garantía de calidad y al mejor precio.
+                        <br><br>Con más de 10 años de experiencia, nos enorgullecemos de brindar un servicio excepcional y asesorarte en la elección del dispositivo ideal para ti.
+                        <br><br>Estamos ubicados en el corazón de la ciudad, en Avenida Tecnológica 123, Ciudad Tech.
+                        <br><br>Si prefieres comprar desde la comodidad de tu hogar, te ofrecemos envíos rápidos y seguros a nivel nacional.
+                        <br><br>¡Explora nuestro catálogo y encuentra el iPhone que siempre soñaste!</p>
+                </div>
             </div>
             <div class="slider-box">
                 <ul>
@@ -148,42 +147,40 @@
         </button>
     </div>
 
-        
     <footer>
         <p>&copy; 2024 iPhone Store Online</p>
     </footer>
 
     <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h5 class="modal-title" id="productModalLabel"></h5>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productModalLabel"></h5>
+                </div>
+                <div class="modal-body">
+                    <p id="productDescription"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
             </div>
-            <div class="modal-body">
-            <p id="productDescription"></p>
-            </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            </div>
-        </div>
         </div>
     </div>
     <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h5 class="modal-title" id="cartModalLabel"></h5>
-            </div>
-            <div class="modal-body">
-                <div class="cart-container">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cartModalLabel"></h5>
+                </div>
+                <div class="modal-body">
+                    <div class="cart-container">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                 </div>
             </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            </div>
-        </div>
         </div>
     </div>
-  
 </body>
 </html>
