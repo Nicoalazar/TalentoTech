@@ -451,6 +451,10 @@ button:hover {
         color: var(--primary-color);
         font-size: 2vh;
     }
+    #reseñas {
+        width: 100%;
+        overflow: hidden;
+    }
 
     .reseñas-grid {
         margin: 1%;
@@ -459,9 +463,9 @@ button:hover {
         display: flex;
         padding: 0;
         width: 300%;
-        height: 300px; /* Ajusta al tamaño de las reseñas */
+        height: 250px; /* Ajusta al tamaño de las reseñas */
         position: relative; /* Previene efectos no deseados */
-        animation: slide 25s infinite alternate-reverse ease-in-out;
+        animation: slide 20s infinite alternate-reverse ease-in-out;
     }
 
     @keyframes slide {
@@ -469,7 +473,7 @@ button:hover {
             transform: translateX(0);
         }
         100% {
-            transform: translateX(-50%); /* Ajusta según el desplazamiento deseado */
+            transform: translateX(-69%); /* Ajusta según el desplazamiento deseado */
         }
     }
     
