@@ -473,7 +473,7 @@ button:hover {
         display: flex;
         padding: 0;
         width: 300%;
-        height: 250px; /* Ajusta al tamaño de las reseñas */
+        height: 300px; /* Ajusta al tamaño de las reseñas */
         position: relative; /* Previene efectos no deseados */
         animation: slide 20s infinite alternate-reverse ease-in-out;
     }
