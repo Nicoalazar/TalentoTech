@@ -75,10 +75,11 @@ header nav ul li {
 header nav ul li a {
     color: var(--bg-color);
     text-decoration: none;
+    font-size: large !important;
 }
 
 header nav ul li a:hover {
-    color: var(--accent-color);
+    color: var(--accent-color) !important;
 }
 
 h1{
@@ -397,6 +398,10 @@ button:hover {
         cursor: pointer;
         display: inline-block;
     }
+
+    .navbar-toggler {
+        border: var(--text-color) solid 1px !important; 
+    }
     
     #cart-count-header {
         position: absolute;
@@ -413,31 +418,77 @@ button:hover {
         width: 18px;
         height: 18px;
     }
+
     .d-flex {
         flex-direction: column;
         align-items: center;
         text-align: center;
     }
+
     .productos-container {
         flex-direction: column;
         align-items: center;
     }
+
     .container {
         max-width: 90%;
         width: 90%;
         text-align: center;
     }
+
     .slider-box {
         width: 90%;
         margin: 20px 0;
     }
+
     form {
         width: 90%;
     }
+
     .welcome {
         text-align: center;
         padding: 10px;
         color: var(--primary-color);
         font-size: 2vh;
     }
+
+    .reseñas-grid {
+        margin: 1%;
+        overflow: hidden;
+        align-content: center;
+        display: flex;
+        padding: 0;
+        width: 300%;
+        height: 300px; /* Ajusta al tamaño de las reseñas */
+        position: relative; /* Previene efectos no deseados */
+        animation: slide 25s infinite alternate-reverse ease-in-out;
+    }
+
+    @keyframes slide {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-50%); /* Ajusta según el desplazamiento deseado */
+        }
+    }
+    
+    
+    .reseña {
+        width: 100%;
+        height: 100%; /* Garantiza que se ajuste al contenedor */
+        margin: 0; /* Elimina márgenes innecesarios */
+    }
+    
+    .reseña:hover {
+        background-color: var(--accent-color);
+        color: var(--bg-color);
+        border-color: var(--accent-color);
+    }
+    
+    .reseña p {
+        font-style: italic;
+        height: 60%;
+    }
 }
+
