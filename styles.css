@@ -332,6 +332,16 @@ button:hover {
     gap: 10px; 
 }
 
+.btn-update-quantity {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
+
 /* Botones */
 #btnUp, #btnCart {
 

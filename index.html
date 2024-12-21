@@ -44,10 +44,7 @@
             </div>
             <div class="navcart" id="navcart" hidden="false">
                 <span id="cart-count-header" class="badge"></span>
-                <i class="bi bi-cart4 fa-3x" onclick="openCart()"></i>
-                <!-- <a class="nav-link text-white" onclick="openCart()">
-                    Ver Carrito 
-                </a> -->
+                <i class="bi bi-cart4 fa-3x" onclick="showCartModal()"></i>
             </div>
         </div>
     </header>
@@ -141,7 +138,7 @@
         <button id="btnUp" hidden="true" title="Ir arriba">
             <i class="bi bi-arrow-up-circle-fill fa-3x" id="imgUp"> </i>
         </button>
-        <button id="btnCart" onclick="openCart()" hidden="true" title="Ir al carrito">
+        <button id="btnCart" onclick="showCartModal()" hidden="true" title="Ir al carrito">
             <i class="bi bi-cart4 fa-3x" id="imgCart"></i>
             <span id="cart-count" class="badge"></span>
         </button>
@@ -166,23 +163,64 @@
             </div>
         </div>
     </div>
+
     <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="cartModalLabel"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="cart-container">
+                    <table class="table table-bordered align-middle text-center">
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th>Precio</th>
+                                <th>Cantidad</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cart-container">
+                            <!-- Contenido dinámico del carrito -->
+                        </tbody>
+                    </table>
+                    <div id="cart-total" class="text-end fw-bold">
+                        <!-- Total dinámico del carrito -->
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary" id="update-cart">Actualizar Carrito</button>
+                    <button type="button" class="btn btn-success" id="pay-cart" onclick="openCheckoutModal()">Pagar</button>
                     <button type="button" class="btn btn-danger" onclick="clearCart()" data-bs-dismiss="modal">Vaciar Carrito</button>
                 </div>
             </div>
         </div>
     </div>
+    <div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="paymentModalLabel">Resumen de Compra</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="purchase-summary">
+                        <!-- Aquí se insertará dinámicamente el resumen de compra -->
+                    </div>
+                    <h6>Métodos de Pago</h6>
+                    <ul>
+                        <li>Tarjeta de Crédito/Débito</li>
+                        <li>Transferencia Bancaria</li>
+                        <li>Pago en Efectivo</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" onclick="finalizePurchase()" data-bs-dismiss="modal">Finalizar Compra</button>
+                    <button type="button" class="btn btn-secondary" onclick="showCartModal()">Volver al Carrito</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
 </body>
 </html>

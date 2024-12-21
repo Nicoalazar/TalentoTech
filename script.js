@@ -1,10 +1,12 @@
 //Declaración de variables globales
 const productsContainer = document.querySelector(".productos-container");
-const cartContainer = document.querySelector(".cart-container");
+const cartContainer = document.querySelector("#cart-container");
 let products = [];
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 const btnCart = document.getElementById("btnCart");
 const btnUp = document.getElementById("btnUp");
+const paymentModal = new bootstrap.Modal(document.getElementById("paymentModal"));
+
 
 //Verificar si hay productos en el carrito
 if (cart.length > 0) {
@@ -80,6 +82,7 @@ function addToCart(card) {
  * en el encabezado de la página.
  */
 function updateCartCount() {
+    cart = JSON.parse(localStorage.getItem("cart")) || [];
     let totalQuantity = 0;
 
     cart.forEach((item) => {
@@ -116,53 +119,81 @@ function showDescription(btn) {
 };
 
 /**
- * Abre el modal del carrito de compras y muestra el contenido
- * del carrito con los productos agregados.
+ * Muestra el carrito de compras y configura su contenido.
+ * El contenido se basa en los productos en el carrito y muestra el título, precio, cantidad y total de cada producto.
+ * Utiliza la función showCart para configurar el contenido del carrito.
  */
-function openCart() {
+function showCartModal() {
     const cartModal = new bootstrap.Modal(document.getElementById("cartModal"));
+    cartModal.show(); 
+    showCart(); 
+    paymentModal.hide();
+}
+
+
+/**
+ * Muestra el carrito de compras y configura su contenido.
+ * El contenido se basa en los productos en el carrito y muestra el título, precio, cantidad y total de cada producto.
+ * El botón "+" permite aumentar la cantidad de un producto en el carrito y el botón "-" disminuirla.
+ * El total del carrito se muestra al final del modal.
+ */
+function showCart() {
+    cart = JSON.parse(localStorage.getItem("cart")) || [];
+    updateCartCount();
     document.getElementById("cartModalLabel").innerText = "Carrito de compras";
     cartContainer.innerHTML = "";
 
     let total = 0; 
     cart.forEach((item, index) => {
         let cartDetail = `
-            <div class="cart-item">
-                <p>${item.title}</p>
-                <p>$${item.price}</p>
-                <input type="number" class="item-quantity" data-index="${index}" value="${item.quantity}" min="1">
-                <button class="btn-update-quantity" data-index="${index}">Actualizar</button>
-            </div>
+            <tr>
+                <td>${item.title}</td>
+                <td>$${item.price.toFixed(2)}</td>
+                <td>
+                     <div class="d-flex justify-content-center align-items-center gap-2">
+                        <button class="btn-update-quantity btn btn-sm btn-success" onclick="sumQuantity(${index})">+</button>
+                        <span>${item.quantity}</span>
+                        <button class="btn-update-quantity btn btn-sm btn-danger" onclick="restQuantity(${index})">-</button>
+                    </div>
+                </td>
+                <td>$${(item.price * item.quantity).toFixed(2)}</td>
+            </tr>
         `;
         cartContainer.innerHTML += cartDetail;
         total += item.price * item.quantity;
     });
-    const totalPrice = `<p>Total: $${total.toFixed(2)}</p>`;
+    const totalPrice = `
+        <tr>
+            <td colspan="3" class="text-end fw-bold">Total:</td>
+            <td>$${total.toFixed(2)}</td>
+        </tr>`;
     cartContainer.innerHTML += totalPrice;
-    cartModal.show();
 }
 
-document.body.addEventListener("click", (e) => {
-    if (e.target.classList.contains("btn-update-quantity")) {
-        const index = e.target.getAttribute("data-index");
-        const newQuantity = parseInt(document.querySelector(`.item-quantity[data-index="${index}"]`).value);
-
-        if (newQuantity > 0) {
-            cart[index].quantity = newQuantity;
-            localStorage.setItem("cart", JSON.stringify(cart));
-            updateCartCount();
-            openCart();
-        }
-    }
-});
-
-// Cerrar el carrito y actualizar el conteo
-document.getElementById("update-cart").addEventListener("click", () => {
+/**
+ * Aumenta la cantidad de un producto en el carrito en 1 unidad y vuelve a mostrar el carrito.
+ * @param {number} index - Índice del producto en el carrito.
+ */
+function sumQuantity(index) {
+    cart[index].quantity += 1; 
     localStorage.setItem("cart", JSON.stringify(cart));
-    updateCartCount();
-    const cartModal = bootstrap.Modal.getInstance(document.getElementById("cartModal"));
-    cartModal.hide();
-});
+    showCart(); 
+}
+
+/**
+ * Disminuye la cantidad de un producto en el carrito en 1 unidad y vuelve a mostrar el carrito.
+ * Si la cantidad del producto es 0, no hace nada.
+ * @param {number} index - Índice del producto en el carrito.
+ */
+function restQuantity(index) {
+    if (cart[index].quantity > 0) { 
+        cart[index].quantity -= 1;
+    } else {
+        return;
+    }
+    localStorage.setItem("cart", JSON.stringify(cart)); 
+    showCart(); 
+}
 
 /**
  * Limpia el carrito de compras eliminando todos los productos del carrito.
@@ -182,6 +213,60 @@ function clearCart(){
         timer: 1500,
     })
 }
+
+/**
+ * Abre el modal de pago y muestra un resumen de la compra.
+ * El resumen muestra el título, cantidad y subtotal de cada producto en el carrito.
+ * El total de la compra se muestra al final del modal.
+ * Se utiliza la función filter para mostrar solo los productos con cantidad mayor a 0.
+ */
+function openCheckoutModal() {
+    const cartModal = bootstrap.Modal.getInstance(document.getElementById("cartModal"));
+    cartModal.hide();
+
+    const purchaseSummary = document.getElementById("purchase-summary");
+    let summaryHTML = `
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+    `;
+    cart.filter(item => item.quantity > 0).forEach(item => {
+        summaryHTML += `
+            <tr>
+                <td>${item.title}</td>
+                <td>${item.quantity}</td>
+                <td>$${(item.price * item.quantity).toFixed(2)}</td>
+            </tr>
+        `;
+    });
+
+    summaryHTML += `
+            </tbody>
+        </table>
+        <div class="text-end fw-bold">Total: $${cart.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2)}</div>
+    `;
+
+    purchaseSummary.innerHTML = summaryHTML;
+
+    paymentModal.show();
+};
+
+/**
+ * Finaliza la compra y muestra un alert limpiando el carrito.
+ */
+function finalizePurchase() {
+    alert("Gracias por su compra");
+
+    clearCart();
+}
+
+
 
 // Configurar la visibilidad de los botones
 window.addEventListener("scroll", () => {
