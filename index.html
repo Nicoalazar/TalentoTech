@@ -19,6 +19,7 @@
 </head>
 
 <body>
+        <!-- Sección header -->
     <header id="header">
         <h1>iPhone Store Online</h1>
         <div class="header-container">
@@ -44,25 +45,6 @@
                         </ul>
                     </div>
                 </nav>
-                
-                <!-- <nav id="navbar" class="navbar navbar-expand-lg" style="background-color: var(--primary-color);">
-                    <div class="navbar-nav d-flex flex-lg-row flex-column w-50 justify-content-lg-around align-items-lg-center" id="navbarNav">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link text-white" href="#inicio">Inicio</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white" href="#productos">Productos</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white" href="#reseñas">Reseñas</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white" href="#contacto">Contacto</a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav> -->
             </div>
             <div class="navcart" id="navcart" hidden="false">
                 <span id="cart-count-header" class="badge"></span>
@@ -156,6 +138,7 @@
             </form>
         </section>
     </main>
+        <!-- Botones -->
     <div class="btn-container">
         <button id="btnUp" hidden="true" title="Ir arriba">
             <i class="bi bi-arrow-up-circle-fill fa-3x" id="imgUp"> </i>
@@ -165,11 +148,11 @@
             <span id="cart-count" class="badge"></span>
         </button>
     </div>
-
+        <!-- Footer -->
     <footer>
         <p>&copy; 2024 iPhone Store Online</p>
     </footer>
-
+        <!-- Modal de descripcion -->
     <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -185,7 +168,7 @@
             </div>
         </div>
     </div>
-
+        <!-- Modal de carrito -->
     <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -204,11 +187,9 @@
                             </tr>
                         </thead>
                         <tbody id="cart-container">
-                            <!-- Contenido dinámico del carrito -->
                         </tbody>
                     </table>
                     <div id="cart-total" class="text-end fw-bold">
-                        <!-- Total dinámico del carrito -->
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -218,6 +199,7 @@
             </div>
         </div>
     </div>
+        <!-- Modal de pago -->
     <div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -227,7 +209,6 @@
                 </div>
                 <div class="modal-body">
                     <div id="purchase-summary">
-                        <!-- Aquí se insertará dinámicamente el resumen de compra -->
                     </div>
                     <h6>Métodos de Pago</h6>
                     <ul>

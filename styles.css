@@ -473,8 +473,8 @@ button:hover {
         display: flex;
         padding: 0;
         width: 300%;
-        height: 300px; /* Ajusta al tamaño de las reseñas */
-        position: relative; /* Previene efectos no deseados */
+        height: 300px;
+        position: relative;
         animation: slide 20s infinite alternate-reverse ease-in-out;
     }
 
@@ -483,15 +483,15 @@ button:hover {
             transform: translateX(0);
         }
         100% {
-            transform: translateX(-69%); /* Ajusta según el desplazamiento deseado */
+            transform: translateX(-69%);
         }
     }
     
     
     .reseña {
         width: 100%;
-        height: 100%; /* Garantiza que se ajuste al contenedor */
-        margin: 0; /* Elimina márgenes innecesarios */
+        height: 100%; 
+        margin: 0;
     }
     
     .reseña:hover {
